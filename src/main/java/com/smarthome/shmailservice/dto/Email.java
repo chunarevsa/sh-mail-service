@@ -1,16 +1,16 @@
 package com.smarthome.shmailservice.dto;
 
-public class EmailRequest {
+public class Email {
     private String to;
     private String from;
     private String subject;
     private String text;
     private String imageUrl;
 
-    public EmailRequest() {
+    public Email() {
     }
 
-    public EmailRequest(String to, String from, String subject, String text, String imageUrl) {
+    public Email(String to, String from, String subject, String text, String imageUrl) {
         this.to = to;
         this.from = from;
         this.subject = subject;

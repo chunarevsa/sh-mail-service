@@ -1,9 +1,10 @@
 package com.smarthome.shmailservice.service;
 
-import com.smarthome.shmailservice.dto.EmailRequest;
+import com.smarthome.shmailservice.dto.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -20,25 +21,25 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    //  TODO:  @Async
-    public void sentEmail(EmailRequest req) throws MessagingException {
-        Mail mailMessage = new Mail();
+    @Async
+    public void sendEmail(Email req) throws MessagingException {
+        Email mailMessage = new Email();
         mailMessage.setFrom(req.getFrom());
         mailMessage.setTo(req.getTo());
         mailMessage.setSubject(req.getSubject());
-        mailMessage.setMessage(req.getText());
+        mailMessage.setText(req.getText());
         send(mailMessage);
     }
 
-    private void send(Mail mailMessage) throws MessagingException {
+    private void send(Email email) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
 
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(
                 message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
-        mimeMessageHelper.setTo(mailMessage.getTo());
-        mimeMessageHelper.setText(mailMessage.getMessage(), true);
-        mimeMessageHelper.setSubject(mailMessage.getSubject());
-        mimeMessageHelper.setFrom(mailMessage.getFrom());
+        mimeMessageHelper.setTo(email.getTo());
+        mimeMessageHelper.setText(email.getText(), true);
+        mimeMessageHelper.setSubject(email.getSubject());
+        mimeMessageHelper.setFrom(email.getFrom());
         mailSender.send(message);
     }
 }

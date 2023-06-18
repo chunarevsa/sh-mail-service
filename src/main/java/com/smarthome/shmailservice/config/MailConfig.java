@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:mail.properties")
+@PropertySource("classpath:email.properties")
 @EnableAsync
 public class MailConfig {
 

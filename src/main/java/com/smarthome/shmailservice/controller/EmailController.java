@@ -1,36 +1,39 @@
 package com.smarthome.shmailservice.controller;
 
-import com.smarthome.shmailservice.dto.EmailRequest;
+import com.smarthome.shmailservice.dto.Email;
 import com.smarthome.shmailservice.service.EmailService;
-import com.smarthome.shmailservice.dto.EmailRequest;
-import com.smarthome.shmailservice.service.EmailService;
+import com.smarthome.shmailservice.util.HeaderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.MessagingException;
 
 @RestController
-@RequestMapping("/v1/sent")
+@RequestMapping("/api/v1/email")
 public class EmailController {
 
     private final EmailService emailService;
+
+    @Value("${spring.application.name}")
+    private String applicationName;
+    private static final String ENTITY_NAME = "email";
+
 
     @Autowired
     public EmailController(EmailService emailService) {
         this.emailService = emailService;
     }
 
-    //POST /sent (auth-service)
     @PostMapping
-    public ResponseEntity sentEmail(EmailRequest req) throws MessagingException {
-        try {
-            emailService.sentEmail(req);
-            return ResponseEntity.ok().build();
-        } catch (MessagingException e) {
-            return ResponseEntity.internalServerError().build(); // TODO: add Exception
-        }
+    public ResponseEntity sendEmail(@RequestBody Email req) throws MessagingException {
+        emailService.sendEmail(req);
+        return ResponseEntity.noContent().headers(
+                HeaderUtil.createEntitySendingAlert(applicationName, false, ENTITY_NAME, req.getTo())).build();
+
     }
 }

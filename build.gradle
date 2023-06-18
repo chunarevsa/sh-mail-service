@@ -12,26 +12,26 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    set('springCloudVersion', "2021.0.7")
-}
+//ext {
+//    set('springCloudVersion', "2021.0.7")
+//}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-mail:1.2.0.RELEASE'
     implementation 'com.sun.mail:jakarta.mail:1.6.7'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-config'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
+//dependencyManagement {
+//    imports {
+//        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+//    }
+//}
 
 tasks.named('test') {
     useJUnitPlatform()
