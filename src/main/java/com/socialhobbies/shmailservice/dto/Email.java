@@ -1,4 +1,4 @@
-package com.smarthome.shmailservice.dto;
+package com.socialhobbies.shmailservice.dto;
 
 public class Email {
     private String to;

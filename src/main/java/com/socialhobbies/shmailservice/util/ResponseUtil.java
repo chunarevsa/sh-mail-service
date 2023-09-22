@@ -1,4 +1,4 @@
-package com.smarthome.shmailservice.util;
+package com.socialhobbies.shmailservice.util;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
-package com.smarthome.shmailservice.service;
+package com.socialhobbies.shmailservice.service;
 
-import com.smarthome.shmailservice.dto.Email;
+import com.socialhobbies.shmailservice.dto.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;

@@ -1,4 +1,4 @@
-package com.smarthome.shmailservice.util;
+package com.socialhobbies.shmailservice.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

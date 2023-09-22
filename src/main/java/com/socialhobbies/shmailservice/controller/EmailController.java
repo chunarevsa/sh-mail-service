@@ -1,8 +1,8 @@
-package com.smarthome.shmailservice.controller;
+package com.socialhobbies.shmailservice.controller;
 
-import com.smarthome.shmailservice.dto.Email;
-import com.smarthome.shmailservice.service.EmailService;
-import com.smarthome.shmailservice.util.HeaderUtil;
+import com.socialhobbies.shmailservice.dto.Email;
+import com.socialhobbies.shmailservice.service.EmailService;
+import com.socialhobbies.shmailservice.util.HeaderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.smarthome.shmailservice.config;
+package com.socialhobbies.shmailservice.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
